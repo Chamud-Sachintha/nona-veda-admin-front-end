@@ -6,8 +6,8 @@
     "start": "ng serve --port 4201",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:nona-veda-admin-front-end": "node dist/nona-veda-admin-front-end/server/server.mjs"
+    "dev": "ng serve --port 4201 --configuration development",
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
@@ -22,9 +22,12 @@
     "@angular/router": "^17.0.0",
     "@angular/ssr": "^17.0.5",
     "express": "^4.18.2",
+    "ngx-spinner": "^16.0.2",
+    "ngx-toastr": "^18.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.2"
+    "zone.js": "~0.14.2",
+    "ngx-pagination": "6.0.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.0.5",
