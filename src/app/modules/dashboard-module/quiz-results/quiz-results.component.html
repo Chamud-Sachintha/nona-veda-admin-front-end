@@ -1,0 +1,71 @@
+<app-header-banner [headerText]="'Quiz Management'"></app-header-banner>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <h5 class="card-header">Result Informations</h5>
+            <div class="row">
+                <div class="col-md-6 mt-3">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5 class="card-header">Searche Results: </h5>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control mt-1" [(ngModel)]="searchText">
+                        </div>
+                        <!-- <div class="col-2">
+                            <button class="btn btn-primaru btn-sm">Search</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered first">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Client Name</th>
+                                        <th>Email Address</th>
+                                        <th>VATA Result</th>
+                                        <th>PITTA Result</th>
+                                        <th>KAPPA Result</th>
+                                        <th>Submited Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let eachResult of this.quizResultList; index as i">
+                                        <td>{{ i + 1 }}</td>
+                                        <td>{{ eachResult.clientName }}</td>
+                                        <td>{{ eachResult.emailAddress }}</td>
+                                        <td>{{ eachResult.vataResult }}</td>
+                                        <td>{{ eachResult.pittaResult }}</td>
+                                        <td>{{ eachResult.kappaResult }}</td>
+                                        <td>{{ eachResult.submitedTime | date }}</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Client Name</th>
+                                        <th>Email Address</th>
+                                        <th>VATA Result</th>
+                                        <th>PITTA Result</th>
+                                        <th>KAPPA Result</th>
+                                        <th>Submited Time</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -20,4 +20,9 @@ export class QuizService {
     const path = environment.apiUrl + "get-question-list";
     return this.http.post(path, requestParamModel);
   }
+
+  getQuizResults(requestParamModel: Request) {
+    const path = environment.apiUrl + "get-results";
+    return this.http.post(path, requestParamModel);
+  }
 }
