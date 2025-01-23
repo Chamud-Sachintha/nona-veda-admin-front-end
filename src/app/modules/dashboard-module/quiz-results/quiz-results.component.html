@@ -43,9 +43,9 @@
                                         <td>{{ i + 1 }}</td>
                                         <td>{{ eachResult.clientName }}</td>
                                         <td>{{ eachResult.emailAddress }}</td>
-                                        <td>{{ eachResult.vataResult }}</td>
-                                        <td>{{ eachResult.pittaResult }}</td>
-                                        <td>{{ eachResult.kappaResult }}</td>
+                                        <td>{{ eachResult.vataResult | number: '1.2-2' }} %</td>
+                                        <td>{{ eachResult.pittaResult | number: '1.2-2' }} %</td>
+                                        <td>{{ eachResult.kappaResult | number: '1.2-2' }} %</td>
                                         <td>{{ eachResult.submitedTime | date }}</td>
                                     </tr>
                                 </tbody>
