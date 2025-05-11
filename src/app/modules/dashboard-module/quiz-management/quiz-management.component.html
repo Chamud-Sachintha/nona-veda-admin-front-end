@@ -58,7 +58,7 @@
                 </div>
             </div>
             <div class="card-body">
-                
+
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="table-responsive">
@@ -81,8 +81,8 @@
                                         <td>{{ eachQuestion.questionAnswer }}</td>
                                         <td>{{ eachQuestion.createTime | date }}</td>
                                         <td>
-                                            <button class="btn btn-primary btn-sm">Update</button>
-                                            <button class="btn btn-danger btn-sm">Delete</button>
+                                            <button class="btn btn-primary btn-sm" (click)="openModal(eachQuestion)">Update</button>
+                                            <button class="btn btn-danger btn-sm" (click)="onClickDeleteQuiz(eachQuestion)">Delete</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -101,6 +101,45 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade show d-block" *ngIf="showModal" tabindex="-1" role="dialog" style="background: rgba(0,0,0,0.5);">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update Question</h5>
+                <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <label for="">Question Name</label>
+                        <textarea name="questionName" id="" class="form-control">{{ selectedQuestion.quistionName }}</textarea>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <label for="">Answers List</label>
+                        <textarea name="answersList" id="" class="form-control">{{ selectedQuestion.questionAnswer }}</textarea>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <label for="">Select Quiestion Type</label>
+                        <select name="" class="form-control" id="" [(ngModel)]="selectedQuestion.quiestionCategoryType">
+                            <option value="">-- Select an Option --</option>
+                            <option value="1">CARACTÉRISTIQUES PHYSIQUES ET PHYSIOLOGIQUES</option>
+                            <option value="2">ALIMENTATION</option>
+                            <option value="3">RYTHMES ET CAPACITÉS PERSONNELLES</option>
+                            <option value="4">ÉMOTION & TEMPÉRAMENT</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-sm" (click)="updateQuestion()">Update</button>
+                <button type="button" class="btn btn-secondary btn-sm" (click)="closeModal()">Close</button>
             </div>
         </div>
     </div>

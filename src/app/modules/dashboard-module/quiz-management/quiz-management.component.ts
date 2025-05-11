@@ -23,12 +23,57 @@ export class QuizManagementComponent implements OnInit {
   addQuestionForm!: FormGroup;
   questionList: Quiz[] = [];
   searchText = '';
+  showModal = false;
+  selectedQuestion: any = {};
 
   constructor (private formBuilder: FormBuilder, private quizService: QuizService, private tostr: ToastrService) {}
 
   ngOnInit(): void {
     this.initAddQuestionForm();
     this.loadQuestionList();
+  }
+
+  openModal(question: any) {
+    this.selectedQuestion = { ...question }; // clone to avoid binding directly
+    this.showModal = true;
+  }
+  
+  closeModal() {
+    this.showModal = false;
+  }
+  
+  updateQuestion() {
+
+    this.showModal = false;
+  
+    this.questionModel.quistionName = this.selectedQuestion.quistionName;
+    this.questionModel.quiestionCategoryType = this.selectedQuestion.quiestionCategoryType;
+    this.questionModel.questionAnswer = this.selectedQuestion.questionAnswer;
+    this.questionModel.questionId = this.selectedQuestion.id;
+    this.questionModel.token = sessionStorage.getItem("authToken");
+
+    this.quizService.updateQuestionById(this.questionModel).subscribe((resp: any) => {
+      if (resp.code === 1) {
+        this.tostr.success("Update Quiztion", "Quiztion Updated Successfully");
+      } else {
+        this.tostr.error("Update Quiztion", resp.message);
+      }
+    })
+
+  }
+
+  onClickDeleteQuiz(eachQuiz: any) {
+    this.questionModel.questionId = eachQuiz.id;
+    this.questionModel.token = sessionStorage.getItem("authToken");
+
+    this.quizService.deleteQuestionById(this.questionModel).subscribe((resp: any) => {
+      if (resp.code === 1) {
+        this.tostr.success("Delete Quiztion", "Quiztion Deleted Successfully");
+      } else {
+        this.tostr.error("Delete Quiztion", resp.message);
+      }
+    })
+
   }
 
   loadQuestionList() {

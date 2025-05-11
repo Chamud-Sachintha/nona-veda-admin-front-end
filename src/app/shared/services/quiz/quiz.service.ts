@@ -25,4 +25,14 @@ export class QuizService {
     const path = environment.apiUrl + "get-results";
     return this.http.post(path, requestParamModel);
   }
+
+  updateQuestionById(quizModel: Quiz) {
+    const path = environment.apiUrl + "update-question-by-id";
+    return this.http.post(path, quizModel);
+  }
+
+  deleteQuestionById(quizModel: Quiz) {
+    const path = environment.apiUrl + "delete-question-by-id";
+    return this.http.post(path, quizModel);
+  }
 }

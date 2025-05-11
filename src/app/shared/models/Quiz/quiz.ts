@@ -4,4 +4,5 @@ export class Quiz {
     quiestionCategoryType!: string;
     questionAnswer!: string;
     createTime!: string;
+    questionId!: string;
 }
